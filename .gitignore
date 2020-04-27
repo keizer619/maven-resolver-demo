@@ -26,3 +26,4 @@ gradle-app.setting
 
 # generated files
 target
+.idea/workspace.xml
