@@ -24,11 +24,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with my-sample-prog
       working-directory: ./my-sample-prog
-      run: ./gradlew build
-    - name: Build with Gradle
       run: |
         ./gradlew build
         ./gradlew publishToMavenLocal
+    - name: Build with Gradle
+      run: ./gradlew build
       env:
         GIT_USER: ${{ secrets.GIT_USER }}
         GIT_PAT: ${{ secrets.GIT_PAT }}
