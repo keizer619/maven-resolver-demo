@@ -24,3 +24,6 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+      env:
+        GIT_USER: ${{ secrets.GIT_USER }}
+        GIT_PAT: ${{ secrets.GIT_PAT }}
