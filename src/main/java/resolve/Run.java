@@ -3,7 +3,11 @@ package resolve;
 public class Run {
     public static void main(String[] args) {
         MavenResolver resolver = new MavenResolver("target/local-repo");
+
+        //Pass local .m2 directory as a repository
         resolver.addRepository("local", "file:~/.m2/repository/");
+
+        //Pass custom maven repository
         resolver.addRepository("wso2-releases", "http://maven.wso2.org/nexus/content/repositories/releases/");
 
         //This is available in maven central which is the default repository
