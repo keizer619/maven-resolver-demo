@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group 'org.tharik'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task(runMain, dependsOn: 'classes', type: JavaExec) {
+    main = 'resolve.Run'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+build.finalizedBy(runMain)
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.apache.maven', name: 'maven-resolver-provider', version: '3.5.0'
+    compile group: 'org.apache.maven', name: 'maven-model-builder', version: '3.5.0'
+
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-api', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-spi', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-util', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-impl', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-connector-basic', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-transport-file', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-transport-http', version: '1.4.1'
+    compile group: 'org.apache.maven.resolver', name: 'maven-resolver-impl', version: '1.4.1'
+
+}
