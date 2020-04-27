@@ -22,8 +22,13 @@ jobs:
         java-version: 1.8
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-    - name: Build with Gradle
+    - name: Build with my-sample-prog
+      working-directory: ./my-sample-prog
       run: ./gradlew build
+    - name: Build with Gradle
+      run: |
+        ./gradlew build
+        ./gradlew publishToMavenLocal
       env:
         GIT_USER: ${{ secrets.GIT_USER }}
         GIT_PAT: ${{ secrets.GIT_PAT }}
