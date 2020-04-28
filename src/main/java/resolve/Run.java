@@ -7,12 +7,11 @@ public class Run {
         MavenResolver resolver = new MavenResolver("target" + File.separator + " local-repo");
 
         //Pass local .m2 directory as a repository
-        resolver.addRepository("local", "file:" + System.getProperty("user.home") + File.separator + ".m2 "
+        resolver.addRepository("local", "file:" + System.getProperty("user.home") + File.separator + ".m2"
                 + File.separator + "repository");
 
         //Pass custom maven repository
         resolver.addRepository("wso2-releases", "http://maven.wso2.org/nexus/content/repositories/releases/");
-
 
         String username = System.getenv("GIT_USER");
         String password = System.getenv("GIT_PAT");

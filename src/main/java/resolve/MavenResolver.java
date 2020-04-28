@@ -57,7 +57,7 @@ public class MavenResolver {
     }
 
     /**
-     * Sepcified repository will be added to remote repositories.
+     * Specified repository will be added to remote repositories.
      *
      * @param id  identifier of the repository
      * @param url url of the repository
@@ -67,10 +67,12 @@ public class MavenResolver {
     }
 
     /**
-     * Sepcified repository will be added to remote repositories.
+     * Specified repository will be added to remote repositories.
      *
      * @param id  identifier of the repository
      * @param url url of the repository
+     * @param username username which has authentication access
+     * @param password password which has authentication access
      */
     public void addRepository(String id, String url, String username, String password) {
         Authentication authentication =
@@ -93,12 +95,12 @@ public class MavenResolver {
     public void resolve(String groupId, String artifactId, String version, boolean resolveTransitiveDependencies) {
         Artifact artifact = new DefaultArtifact(groupId + ":" + artifactId + ":" + version);
         if (resolveTransitiveDependencies) {
-            DependencyFilter classpathFlter = DependencyFilterUtils.classpathFilter(JavaScopes.COMPILE);
+            DependencyFilter classpathFilter = DependencyFilterUtils.classpathFilter(JavaScopes.COMPILE);
             CollectRequest collectRequest = new CollectRequest();
             collectRequest.setRoot(new Dependency(artifact, JavaScopes.COMPILE));
             collectRequest.setRepositories(repositories);
 
-            DependencyRequest dependencyRequest = new DependencyRequest(collectRequest, classpathFlter);
+            DependencyRequest dependencyRequest = new DependencyRequest(collectRequest, classpathFilter);
 
             try {
                 List<ArtifactResult> artifactResults =
